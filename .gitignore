@@ -1,0 +1,24 @@
+# Build output
+*.exe
+*.dll
+*.so
+*.dylib
+/dist/
+/bin/
+/docs/
+
+# Logs and Reports
+*.log
+/output/
+spec-recon-report.html
+spec-recon-report.xlsx
+openapi.json
+
+# IDE settings
+.idea/
+.vscode/
+*.swp
+
+# OS generated
+.DS_Store
+Thumbs.db

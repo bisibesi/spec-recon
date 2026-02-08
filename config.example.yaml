@@ -1,0 +1,60 @@
+# Spec Recon Configuration Example
+# Copy this file to 'config.yaml' and customize for your project
+
+# Project settings
+project:
+  # Root directory to analyze (relative or absolute path)
+  root_dir: "."
+  
+  # Base Java package (optional, used for package filtering)
+  # Example: "com.company" will focus analysis on this package tree
+  base_package: ""
+  
+  # Encoding hints for charset detection (tried in order)
+  # Add legacy encodings if your codebase uses them
+  encoding:
+    - "utf-8"      # Standard UTF-8
+    - "euc-kr"     # Korean (Legacy)
+    - "ms949"      # Korean Windows (Legacy)
+
+# Analysis behavior
+analysis:
+  # Directories to exclude from analysis (glob patterns)
+  exclude_dirs:
+    - "**/test/**"          # Test directories
+    - "**/tests/**"
+    - "**/target/**"        # Maven build output
+    - "**/build/**"         # Gradle build output
+    - "**/out/**"           # IDE output
+    - "**/.git/**"          # Version control
+    - "**/.svn/**"
+    - "**/node_modules/**"  # Frontend dependencies
+  
+  # Patterns for utility classes to exclude from output
+  # These classes will be filtered out from the call tree
+  util_patterns:
+    - "*Util"           # StringUtil, DateUtil, etc.
+    - "*Utils"          # CollectionUtils, FileUtils, etc.
+    - "*Helper"         # ValidationHelper, etc.
+    - "*Helpers"
+    - "*DTO"            # Data Transfer Objects
+    - "*VO"             # Value Objects
+    - "*Entity"         # JPA Entities
+    - "*Constant"       # Constant classes
+    - "*Constants"
+    - "*Config"         # Configuration classes
+    - "*Configuration"
+  
+  # If true, utility classes will be included in the output
+  # (Not recommended for large projects)
+  include_utils: false
+
+# Output settings
+output:
+  # Directory where the Excel report will be saved
+  # Will be created automatically if it doesn't exist
+  dir: "./output"
+  
+  # Output file name (without .xlsx extension)
+  # Final file: {dir}/{file_name}.xlsx
+  file_name: "spec-recon-report"

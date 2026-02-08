@@ -1,0 +1,13 @@
+# Test Configuration for Spec Recon
+project:
+  root_dir: "./testdata/hybrid_sample"
+  base_package: "com.company"
+  encoding: ["utf-8"]
+
+analysis:
+  exclude_dirs: ["**/test/**"]
+  util_patterns: ["*Util"]
+
+output:
+  dir: "./output"
+  file_name: "spec-recon-report"
